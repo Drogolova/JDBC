@@ -1,9 +1,16 @@
 import lombok.Data;
 
-@Data
-public class City {
+import javax.persistence.*;
 
+@Data
+@Entity
+@Table(name = "city")
+public class City {
+    @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "city_id")
     private int cityId;
+    @Column(name = "city_name")
     private String cityName;
 
     public City(int cityId, String cityName) {
@@ -13,5 +20,9 @@ public class City {
 
     public City(String cityName) {
         this.cityName = cityName;
+    }
+
+    public City() {
+
     }
 }

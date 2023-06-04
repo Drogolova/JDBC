@@ -19,31 +19,14 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private int age;
-    @Column(name = "city_id")
-    private Integer city;
-
-//    public Employee(int id, String firstName, String lastName, String gender, int age, int city) {
-//        this.id = id;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.gender = gender;
-//        this.age = age;
-//        this.city = city;
-//    }
+    @JoinColumn(name = "city_id")
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private City city;
 
     public Employee() {
     }
 
-//    public Employee(String firstName, String lastName, String gender, int age, City city) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.gender = gender;
-//        this.age = age;
-//        this.city = city;
-//    }
-
-
-    public Employee(int id, String firstName, String lastName, String gender, int age, int city) {
+    public Employee(int id, String firstName, String lastName, String gender, int age, City city) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -52,7 +35,7 @@ public class Employee {
         this.city = city;
     }
 
-    public Employee(String firstName, String lastName, String gender, int age, int city) {
+    public Employee(String firstName, String lastName, String gender, int age, City city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
